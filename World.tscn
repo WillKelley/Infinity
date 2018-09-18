@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://BetterTile1.tres" type="TileSet" id=1]
-[ext_resource path="res://Tile.png" type="Texture" id=2]
-[ext_resource path="res://player.gd" type="Script" id=3]
-[ext_resource path="res://player.png" type="Texture" id=4]
+[ext_resource path="res://BasicTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://player.gd" type="Script" id=2]
+[ext_resource path="res://player.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -33,24 +32,17 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -262147, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 196607, 0, 0, 131072, 1, 0, 131073, 2, 0, 262143, 3, 0, 196608, 4, 0, 196609, 5, 0, 327679, 6, 0, 262144, 7, 0, 262145, 8, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 1, 0, 3, 2, 0, 4, 0, 0, 5, 1, 0, 6, 1, 0, 7, 2, 0, 8, 0, 0, 9, 1, 0, 10, 2, 0, 65536, 3, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 4, 0, 65541, 4, 0, 65542, 4, 0, 65543, 4, 0, 65544, 4, 0, 65545, 4, 0, 65546, 5, 0, 131072, 3, 0, 131073, 4, 0, 131074, 4, 0, 131075, 5, 0, 131076, 6, 0, 131077, 7, 0, 131078, 7, 0, 131079, 8, 0, 131080, 3, 0, 131081, 4, 0, 131082, 5, 0, 196608, 6, 0, 196609, 7, 0, 196610, 4, 0, 196611, 8, 0, 196614, 0, 0, 196615, 1, 0, 196616, 7, 0, 196617, 7, 0, 196618, 8, 0, 262144, 0, 0, 262145, 1, 0, 262146, 5, 0, 262147, 0, 0, 262148, 1, 0, 262149, 2, 0, 262150, 3, 0, 262151, 5, 0, 327680, 6, 0, 327681, 4, 0, 327682, 8, 0, 327683, 3, 0, 327684, 4, 0, 327685, 5, 0, 327686, 6, 0, 327687, 8, 0, 393216, 0, 0, 393217, 4, 0, 393218, 2, 0, 393219, 3, 0, 393220, 4, 0, 393221, 5, 0, 458752, 6, 0, 458753, 7, 0, 458754, 7, 0, 458755, 7, 0, 458756, 7, 0, 458757, 8, 0 )
 _sections_unfolded = [ "Cell" ]
-
-[node name="Tile" type="Sprite" parent="TileMap" index="0"]
-
-position = Vector2( -30, -30 )
-texture = ExtResource( 2 )
-centered = false
-_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="player" type="KinematicBody2D" parent="." index="1"]
 
-position = Vector2( 40, 60 )
+position = Vector2( 110, 110 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 _sections_unfolded = [ "collision" ]
 __meta__ = {
 "_edit_group_": true
@@ -58,7 +50,9 @@ __meta__ = {
 
 [node name="player" type="Sprite" parent="player" index="0"]
 
-texture = ExtResource( 4 )
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" index="1"]
 
