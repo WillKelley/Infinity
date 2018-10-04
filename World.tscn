@@ -1,758 +1,14 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://BasicTileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://player.gd" type="Script" id=2]
-[ext_resource path="res://player.png" type="Texture" id=3]
-[ext_resource path="res://Door.gd" type="Script" id=4]
-[ext_resource path="res://Doors.png" type="Texture" id=5]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://obstacle.png" type="Texture" id=3]
+[ext_resource path="res://player.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CircleShape2D" id=1]
-
-custom_solver_bias = 0.0
-radius = 10.0
-
-[sub_resource type="Animation" id=6]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=7]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="SegmentShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-a = Vector2( 0, 0 )
-b = Vector2( 0, 32 )
-
-[sub_resource type="RectangleShape2D" id=9]
-
-custom_solver_bias = 0.0
-extents = Vector2( 16, 16 )
-
-[sub_resource type="Animation" id=10]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=11]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=12]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=13]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=14]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=15]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=16]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=17]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=18]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=19]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=20]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=21]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=22]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=23]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=24]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=25]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=26]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=27]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=28]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=29]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=30]
-
-resource_name = "Closed"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=31]
-
-length = 2.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionBox/CollisionBox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
+extents = Vector2( 8, 8 )
 
 [node name="World" type="Node2D" index="0"]
 
@@ -779,725 +35,235 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 1, 0, 3, 2, 0, 4, 0, 0, 5, 1, 0, 6, 1, 0, 7, 2, 0, 8, 0, 0, 9, 1, 0, 10, 2, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 2, 0, 65536, 3, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 4, 0, 65541, 4, 0, 65542, 4, 0, 65543, 4, 0, 65544, 4, 0, 65545, 4, 0, 65546, 4, 0, 65547, 1, 0, 65548, 2, 0, 65550, 4, 0, 65551, 4, 0, 65552, 4, 0, 65553, 4, 0, 65554, 5, 0, 131072, 3, 0, 131073, 4, 0, 131074, 4, 0, 131075, 5, 0, 131076, 6, 0, 131077, 7, 0, 131078, 7, 0, 131079, 8, 0, 131080, 3, 0, 131081, 4, 0, 131082, 5, 0, 131083, 6, 0, 131084, 8, 0, 131086, 4, 0, 131087, 4, 0, 131088, 4, 0, 131089, 4, 0, 131090, 5, 0, 196608, 6, 0, 196609, 7, 0, 196610, 4, 0, 196611, 8, 0, 196614, 0, 0, 196615, 1, 0, 196616, 7, 0, 196617, 7, 0, 196618, 8, 0, 196622, 4, 0, 196623, 4, 0, 196624, 4, 0, 196625, 4, 0, 196626, 5, 0, 262144, 0, 0, 262145, 1, 0, 262146, 5, 0, 262147, 0, 0, 262148, 1, 0, 262149, 2, 0, 262150, 3, 0, 262151, 4, 0, 262152, 1, 0, 262153, 1, 0, 262154, 2, 0, 262158, 4, 0, 262159, 4, 0, 262160, 4, 0, 262161, 4, 0, 262162, 5, 0, 327680, 6, 0, 327681, 4, 0, 327682, 8, 0, 327683, 3, 0, 327684, 4, 0, 327685, 5, 0, 327686, 6, 0, 327687, 8, 0, 327688, 3, 0, 327689, 4, 0, 327690, 5, 0, 327694, 4, 0, 327695, 4, 0, 327696, 4, 0, 327697, 4, 0, 327698, 5, 0, 393216, 0, 0, 393217, 4, 0, 393218, 2, 0, 393219, 3, 0, 393220, 4, 0, 393221, 5, 0, 393224, 6, 0, 393225, 7, 0, 393226, 8, 0, 393230, 4, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 393234, 5, 0, 458752, 3, 0, 458753, 7, 0, 458754, 7, 0, 458755, 7, 0, 458756, 4, 0, 458757, 8, 0, 458758, 0, 0, 458759, 1, 0, 458760, 2, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 458770, 5, 0, 524288, 3, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 4, 0, 524293, 2, 0, 524294, 3, 0, 524295, 4, 0, 524296, 5, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 524306, 5, 0, 589824, 6, 0, 589825, 8, 0, 589826, 6, 0, 589827, 7, 0, 589828, 7, 0, 589829, 7, 0, 589830, 7, 0, 589831, 7, 0, 589832, 8, 0, 589838, 7, 0, 589839, 7, 0, 589840, 7, 0, 589841, 7, 0, 589842, 8, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 1, 0, 3, 2, 0, 4, 0, 0, 5, 1, 0, 6, 1, 0, 7, 2, 0, 8, 0, 0, 9, 1, 0, 10, 2, 0, 65536, 3, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 4, 0, 65541, 4, 0, 65542, 4, 0, 65543, 4, 0, 65544, 4, 0, 65545, 4, 0, 65546, 4, 0, 65547, 1, 0, 65548, 2, 0, 131072, 3, 0, 131073, 4, 0, 131074, 4, 0, 131075, 5, 0, 131076, 6, 0, 131077, 7, 0, 131078, 7, 0, 131079, 8, 0, 131080, 3, 0, 131081, 4, 0, 131082, 5, 0, 131083, 6, 0, 131084, 8, 0, 196608, 6, 0, 196609, 7, 0, 196610, 4, 0, 196611, 8, 0, 196614, 0, 0, 196615, 1, 0, 196616, 7, 0, 196617, 7, 0, 196618, 8, 0, 262144, 0, 0, 262145, 1, 0, 262146, 5, 0, 262147, 0, 0, 262148, 1, 0, 262149, 2, 0, 262150, 3, 0, 262151, 4, 0, 262152, 1, 0, 262153, 1, 0, 262154, 2, 0, 262158, 4, 0, 262159, 4, 0, 262160, 4, 0, 262161, 4, 0, 327680, 6, 0, 327681, 4, 0, 327682, 8, 0, 327683, 3, 0, 327684, 4, 0, 327685, 5, 0, 327686, 6, 0, 327687, 8, 0, 327688, 3, 0, 327689, 4, 0, 327690, 5, 0, 327694, 4, 0, 327695, 4, 0, 327696, 4, 0, 327697, 4, 0, 393216, 0, 0, 393217, 4, 0, 393218, 2, 0, 393219, 3, 0, 393220, 4, 0, 393221, 5, 0, 393224, 6, 0, 393225, 7, 0, 393226, 8, 0, 393230, 4, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 458752, 3, 0, 458753, 7, 0, 458754, 7, 0, 458755, 7, 0, 458756, 4, 0, 458757, 8, 0, 458758, 0, 0, 458759, 1, 0, 458760, 2, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 524288, 3, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 4, 0, 524293, 2, 0, 524294, 3, 0, 524295, 4, 0, 524296, 4, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 589824, 6, 0, 589825, 8, 0, 589826, 6, 0, 589827, 7, 0, 589828, 7, 0, 589829, 7, 0, 589830, 7, 0, 589831, 7, 0, 589832, 8, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0, 655374, 4, 0, 655375, 4, 0, 655376, 4, 0, 655377, 4, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="player" type="KinematicBody2D" parent="." index="1"]
-
-editor/display_folded = true
-position = Vector2( 112, 112 )
-input_pickable = false
-collision_layer = 3
-collision_mask = 3
-collision/safe_margin = 0.08
-script = ExtResource( 2 )
-_sections_unfolded = [ "Collision", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="player" type="Sprite" parent="player" index="0"]
-
-modulate = Color( 1, 0, 0, 1 )
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player" index="1"]
-
-shape = SubResource( 1 )
-
-[node name="Doors" type="Node2D" parent="." index="2"]
+[node name="Doors" type="Node2D" parent="." index="1"]
 
 editor/display_folded = true
 position = Vector2( 112, 32 )
 
-[node name="Door" type="Area2D" parent="Doors" index="0"]
+[node name="Door3" parent="Doors" index="0" instance=ExtResource( 2 )]
 
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 48, 208 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="Sprite" type="Sprite" parent="Doors/Door" index="0"]
+[node name="Door4" parent="Doors" index="1" instance=ExtResource( 2 )]
 
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
-
-[node name="anim" type="AnimationPlayer" parent="Doors/Door" index="1"]
-
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 6 )
-anims/Open = SubResource( 7 )
-blend_times = [  ]
-
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door2" type="Area2D" parent="Doors" index="1"]
-
-editor/display_folded = true
-position = Vector2( 128, 0 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Doors/Door2" index="0"]
-
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
-
-[node name="anim" type="AnimationPlayer" parent="Doors/Door2" index="1"]
-
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 10 )
-anims/Open = SubResource( 11 )
-blend_times = [  ]
-
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door2" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door2/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door2" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door3" type="Area2D" parent="Doors" index="2"]
-
-editor/display_folded = true
-position = Vector2( 224, 0 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Doors/Door3" index="0"]
-
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
-
-[node name="anim" type="AnimationPlayer" parent="Doors/Door3" index="1"]
-
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 12 )
-anims/Open = SubResource( 13 )
-blend_times = [  ]
-
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door3" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door3/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door3" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door4" type="Area2D" parent="Doors" index="3"]
-
-editor/display_folded = true
-position = Vector2( 128, 64 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Doors/Door4" index="0"]
-
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
-
-[node name="anim" type="AnimationPlayer" parent="Doors/Door4" index="1"]
-
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 14 )
-anims/Open = SubResource( 15 )
-blend_times = [  ]
-
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door4" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door4/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door4" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door5" type="Area2D" parent="Doors" index="4"]
-
-editor/display_folded = true
-position = Vector2( 128, 96 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Doors/Door5" index="0"]
-
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
-
-[node name="anim" type="AnimationPlayer" parent="Doors/Door5" index="1"]
-
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 16 )
-anims/Open = SubResource( 17 )
-blend_times = [  ]
-
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door5" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door5/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door5" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door6" type="Area2D" parent="Doors" index="5"]
-
-editor/display_folded = true
-position = Vector2( -32, 192 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Doors/Door6" index="0"]
-
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
-
-[node name="anim" type="AnimationPlayer" parent="Doors/Door6" index="1"]
-
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 18 )
-anims/Open = SubResource( 19 )
-blend_times = [  ]
-
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door6" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door6/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door6" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door7" type="Area2D" parent="Doors" index="6"]
-
-editor/display_folded = true
-position = Vector2( -64, 224 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Doors/Door7" index="0"]
-
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
-
-[node name="anim" type="AnimationPlayer" parent="Doors/Door7" index="1"]
-
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 20 )
-anims/Open = SubResource( 21 )
-blend_times = [  ]
-
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door7" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door7/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door7" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door8" type="Area2D" parent="Doors" index="7"]
-
-editor/display_folded = true
 position = Vector2( 64, 256 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision" ]
+
+[node name="Door5" parent="Doors" index="2" instance=ExtResource( 2 )]
+
+position = Vector2( -64, 224 )
+
+[node name="Door6" parent="Doors" index="3" instance=ExtResource( 2 )]
+
+position = Vector2( -80, 208 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="Door7" parent="Doors" index="4" instance=ExtResource( 2 )]
+
+position = Vector2( -32, 192 )
+
+[node name="Door11" parent="Doors" index="5" instance=ExtResource( 2 )]
+
+position = Vector2( -48, 144 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="boxes" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+
+[node name="box" type="RigidBody2D" parent="boxes" index="0"]
+
+editor/display_folded = true
+position = Vector2( 144, 176 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 10.0
+friction = 1.0
+bounce = 0.5
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 4.0
+angular_velocity = 0.0
+angular_damp = 6.0
+_sections_unfolded = [ "Angular", "Linear" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Doors/Door8" index="0"]
+[node name="Sprite" type="Sprite" parent="boxes/box" index="0"]
 
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
+modulate = Color( 0, 0, 1, 1 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="anim" type="AnimationPlayer" parent="Doors/Door8" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/box" index="1"]
 
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 22 )
-anims/Open = SubResource( 23 )
-blend_times = [  ]
+shape = SubResource( 1 )
 
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door8" index="2"]
+[node name="box2" type="RigidBody2D" parent="boxes" index="1"]
 
 editor/display_folded = true
+position = Vector2( 48, 224 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
+mode = 0
+mass = 10.0
 friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door8/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door8" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door9" type="Area2D" parent="Doors" index="8"]
-
-editor/display_folded = true
-position = Vector2( -48, 112 )
-rotation = 4.71239
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
+bounce = 0.5
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 4.0
+angular_velocity = 0.0
+angular_damp = 6.0
+_sections_unfolded = [ "Angular", "Linear" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Doors/Door9" index="0"]
+[node name="Sprite" type="Sprite" parent="boxes/box2" index="0"]
 
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
+modulate = Color( 0, 0, 1, 1 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="anim" type="AnimationPlayer" parent="Doors/Door9" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/box2" index="1"]
 
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 24 )
-anims/Open = SubResource( 25 )
-blend_times = [  ]
+shape = SubResource( 1 )
 
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door9" index="2"]
+[node name="box3" type="RigidBody2D" parent="boxes" index="2"]
 
 editor/display_folded = true
+position = Vector2( 80, 96 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
+mode = 0
+mass = 10.0
 friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door9/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door9" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door10" type="Area2D" parent="Doors" index="9"]
-
-editor/display_folded = true
-position = Vector2( -80, 176 )
-rotation = 4.71239
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
+bounce = 0.5
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 4.0
+angular_velocity = 0.0
+angular_damp = 6.0
+_sections_unfolded = [ "Angular", "Linear" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Doors/Door10" index="0"]
+[node name="Sprite" type="Sprite" parent="boxes/box3" index="0"]
 
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
+modulate = Color( 0, 0, 1, 1 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="anim" type="AnimationPlayer" parent="Doors/Door10" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/box3" index="1"]
 
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 26 )
-anims/Open = SubResource( 27 )
-blend_times = [  ]
+shape = SubResource( 1 )
 
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door10" index="2"]
+[node name="box4" type="RigidBody2D" parent="boxes" index="3"]
 
 editor/display_folded = true
+position = Vector2( 48, 160 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
+mode = 0
+mass = 10.0
 friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door10/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door10" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door11" type="Area2D" parent="Doors" index="10"]
-
-editor/display_folded = true
-position = Vector2( -112, 240 )
-rotation = 4.71239
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
+bounce = 0.5
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 4.0
+angular_velocity = 0.0
+angular_damp = 6.0
+_sections_unfolded = [ "Angular", "Linear" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Doors/Door11" index="0"]
+[node name="Sprite" type="Sprite" parent="boxes/box4" index="0"]
 
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
+modulate = Color( 0, 0, 1, 1 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="anim" type="AnimationPlayer" parent="Doors/Door11" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/box4" index="1"]
 
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 28 )
-anims/Open = SubResource( 29 )
-blend_times = [  ]
+shape = SubResource( 1 )
 
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door11" index="2"]
+[node name="box5" type="RigidBody2D" parent="boxes" index="4"]
 
 editor/display_folded = true
+position = Vector2( 144, 208 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
+mode = 0
+mass = 10.0
 friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door11/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door11" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
-
-[node name="Door12" type="Area2D" parent="Doors" index="11"]
-
-editor/display_folded = true
-position = Vector2( 16, 240 )
-rotation = 4.71239
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 3
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
+bounce = 0.5
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 4.0
+angular_velocity = 0.0
+angular_damp = 6.0
+_sections_unfolded = [ "Angular", "Linear" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Doors/Door12" index="0"]
+[node name="Sprite" type="Sprite" parent="boxes/box5" index="0"]
 
-texture = ExtResource( 5 )
-centered = false
-hframes = 2
-_sections_unfolded = [ "Animation" ]
+modulate = Color( 0, 0, 1, 1 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="anim" type="AnimationPlayer" parent="Doors/Door12" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/box5" index="1"]
 
-root_node = NodePath("..")
-autoplay = "Closed"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Closed = SubResource( 30 )
-anims/Open = SubResource( 31 )
-blend_times = [  ]
+shape = SubResource( 1 )
 
-[node name="CollisionBox" type="StaticBody2D" parent="Doors/Door12" index="2"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionBox" type="CollisionShape2D" parent="Doors/Door12/CollisionBox" index="0"]
-
-position = Vector2( 16, 0 )
-shape = SubResource( 8 )
-
-[node name="HitBox" type="CollisionShape2D" parent="Doors/Door12" index="3"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 9 )
+[node name="player" parent="." index="3" instance=ExtResource( 4 )]
 
 

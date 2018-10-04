@@ -1,35 +1,25 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-const UP = Vector2(0, 0) #Sets up as topdown
-const MAX_SPEED = 100 # Pixels/second
-const ACCELERATION = 25 
+var motion = Vector2()
+var speed = 85
 
-var motion = Vector2() # single unit used to store (x, y)
+var screensize
 
-var anim=""
+func _ready():
+	screensize = get_viewport().get_visible_rect().size
 
-func _physics_process(delta):
-	
+func _process(delta):
+	var motion = Vector2()
 
-	
-	if Input.is_action_pressed("ui_down"): #Is S pressed
-		motion.y = min(motion.y+ACCELERATION, MAX_SPEED) # accelerate down
-	elif Input.is_action_pressed("ui_up"):  # Is W pressed
-		motion.y = max(motion.y-ACCELERATION, -MAX_SPEED) # Accelerate up
-	
-	else:
-		motion.y = lerp(motion.y, 0, 0.2) # Otherwise add friction in Y plane
-		
-	if Input.is_action_pressed("ui_right"): # Is D pressed
-		motion.x = min(motion.x+ACCELERATION, MAX_SPEED) # accelerate right
-		
-	elif Input.is_action_pressed("ui_left"):
-		motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
+	if Input.is_action_pressed("ui_left"):
+		motion += Vector2(-1, 0)
+	if Input.is_action_pressed("ui_right"):
+		motion += Vector2(1, 0)
+	if Input.is_action_pressed("ui_down"):
+		motion += Vector2(0, 1)
+	if Input.is_action_pressed("ui_up"):
+		motion += Vector2(0, -1)
 
-	else:
-		motion.x = lerp(motion.x, 0, 0.2)
-		
-	look_at(get_global_mouse_position())
+	motion = motion.normalized() * speed
 
-	motion = move_and_slide(motion)
-	pass
+	set_linear_velocity(motion)

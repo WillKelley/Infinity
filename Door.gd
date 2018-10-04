@@ -3,12 +3,13 @@ extends Area2D
 
 var timer = null
 var can_close = false
+var time_before_close = 1
 
 func _ready():
 
 	timer = Timer.new()
 	timer.set_one_shot(true)
-	timer.set_wait_time(1)
+	timer.set_wait_time(time_before_close)
 	timer.connect("timeout", self, "on_timeout_complete")
 	add_child(timer)
 
@@ -26,4 +27,4 @@ func _process(delta):
 
 	if can_close == true:
 		$anim.play("Closed")
-	
+
