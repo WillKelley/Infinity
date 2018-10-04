@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50, 50 )
+
+[node name="Space" type="Node" index="0"]
+
+[node name="Block" type="RigidBody2D" parent="." index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block" index="0"]
+
+position = Vector2( 32, 32 )
+shape = SubResource( 1 )
+
+[node name="PlayerBody" type="RigidBody2D" parent="." index="1"]
+
+position = Vector2( 160, 144 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 10.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 98.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 0.5
+angular_velocity = 0.0
+angular_damp = 5.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+engine_thrust = 500
+spin_thrust = 25000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody" index="0"]
+
+shape = SubResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+

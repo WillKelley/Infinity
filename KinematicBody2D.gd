@@ -1,24 +1,27 @@
-extends KinematicBody2D
+extends RigidBody2D
 
-# This is a demo showing how KinematicBody2D
-# move_and_slide works.
+export (int) var engine_thrust
 
-# Member variables
-const MOTION_SPEED = 160 # Pixels/second
+var thrust = Vector2()
 
 
-func _physics_process(delta):
-	var motion = Vector2()
+var screensize
+
+func _ready():
+	screensize = get_viewport().get_visible_rect().size
+
+func _process(delta):
+	var thrust = Vector2()
+
+	if Input.is_action_pressed("ui_left"):
+		thrust += Vector2(-1, 0)
+	if Input.is_action_pressed("ui_right"):
+		thrust += Vector2(1, 0)
+	if Input.is_action_pressed("ui_down"):
+		thrust += Vector2(0, 1)
+	if Input.is_action_pressed("ui_up"):
+		thrust += Vector2(0, -1)
 	
-	if Input.is_action_pressed("move_up"):
-		motion += Vector2(0, -1)
-	if Input.is_action_pressed("move_bottom"):
-		motion += Vector2(0, 1)
-	if Input.is_action_pressed("move_right"):
-		motion += Vector2(-1, 0)
-	if Input.is_action_pressed("move_left"):
-		motion += Vector2(1, 0)
-	
-	motion = motion.normalized() * MOTION_SPEED
+	thrust = thrust.normalized() * 500
 
-	move_and_slide(motion)
+	set_linear_velocity(thrust)
