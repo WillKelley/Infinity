@@ -21,5 +21,9 @@ func _process(delta):
 		motion += Vector2(0, -1)
 
 	motion = motion.normalized() * speed
+	
 
 	set_linear_velocity(motion)
+	
+	
+

@@ -1,6 +1,5 @@
 extends Area2D
 
-
 var timer = null
 var can_close = false
 var time_before_close = 1

@@ -4,5 +4,5 @@ extends TileMap
 # var a = 2
 # var b = "textvar"
 func _ready():
-	set_cell(0,1,1)
-	set_cell(0 , 0 , 1)
+
+	set_cell(0 , 0 , 0)
