@@ -34,7 +34,6 @@ _sections_unfolded = [ "Angular", "Applied Forces", "Linear" ]
 __meta__ = {
 "_edit_group_": true
 }
-sight_range = 90
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="0"]
 

@@ -24,6 +24,7 @@ func _process(delta):
 	
 
 	set_linear_velocity(motion)
-	
-	
+
+func player():
+	1 == 1
 
