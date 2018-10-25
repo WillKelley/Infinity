@@ -48,8 +48,8 @@ func _physics_process(delta):
 #			last_seen = (target.global_position - global_position).normalized()
 #			dest = target.global_position
 		else:
-#			target_dir = rotation
-#			rotation = current_dir.linear_interpolate(target_dir, rotation_speed * delta).angle()
+			target_dir = rotation
+			rotation = current_dir.linear_interpolate(target_dir, rotation_speed * delta).angle()
 			motion = Vector2(0, 0)
 	else:
 			motion = Vector2(0, 0)
