@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Tiles/BasicTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Tiles/TileMap.gd" type="Script" id=2]
+[ext_resource path="res://Doors/Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Units/obstacle.png" type="Texture" id=4]
+[ext_resource path="res://Units/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Units/NotPlayer.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[node name="World" type="Node2D"]
+
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 2, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 65536, 3, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 4, 0, 65541, 5, 0, 65542, 4, 0, 65543, 4, 0, 65544, 4, 0, 65545, 4, 0, 65546, 4, 0, 65547, 1, 0, 65548, 2, 0, 131072, 3, 0, 131073, 4, 0, 131074, 4, 0, 131075, 4, 0, 131076, 4, 0, 131077, 5, 0, 131078, 7, 0, 131079, 8, 0, 131080, 3, 0, 131081, 4, 0, 131082, 5, 0, 131083, 6, 0, 131084, 8, 0, 196608, 3, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 4, 0, 196613, 5, 0, 196614, 0, 0, 196615, 1, 0, 196616, 7, 0, 196617, 7, 0, 196618, 8, 0, 262144, 3, 0, 262145, 4, 0, 262146, 4, 0, 262147, 4, 0, 262148, 4, 0, 262149, 5, 0, 262150, 3, 0, 262151, 4, 0, 262152, 1, 0, 262153, 1, 0, 262154, 2, 0, 262158, 4, 0, 262159, 4, 0, 262160, 4, 0, 262161, 4, 0, 327680, 6, 0, 327681, 4, 0, 327682, 7, 0, 327683, 7, 0, 327684, 7, 0, 327685, 8, 0, 327686, 6, 0, 327687, 8, 0, 327688, 3, 0, 327689, 4, 0, 327690, 5, 0, 327694, 4, 0, 327695, 4, 0, 327696, 4, 0, 327697, 4, 0, 393216, 0, 0, 393217, 4, 0, 393218, 2, 0, 393219, 0, 0, 393220, 4, 0, 393221, 2, 0, 393224, 6, 0, 393225, 7, 0, 393226, 8, 0, 393230, 4, 0, 393231, 4, 0, 393232, 4, 0, 393233, 4, 0, 458752, 3, 0, 458753, 7, 0, 458754, 7, 0, 458755, 7, 0, 458756, 4, 0, 458757, 8, 0, 458758, 0, 0, 458759, 1, 0, 458760, 2, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 524288, 3, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 4, 0, 524293, 2, 0, 524294, 3, 0, 524295, 4, 0, 524296, 4, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 4, 0, 589824, 6, 0, 589825, 8, 0, 589826, 6, 0, 589827, 7, 0, 589828, 7, 0, 589829, 7, 0, 589830, 7, 0, 589831, 7, 0, 589832, 8, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 4, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Doors" type="Node2D" parent="." index="1"]
+
+position = Vector2( 112, 32 )
+
+[node name="door" parent="Doors" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( -48, 144 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="boxes" type="Node2D" parent="." index="2"]
+
+[node name="box" type="RigidBody2D" parent="boxes" index="0"]
+
+editor/display_folded = true
+position = Vector2( 48, 144 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 10.0
+friction = 1.0
+bounce = 0.5
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 4.0
+angular_velocity = 0.0
+angular_damp = 6.0
+_sections_unfolded = [ "Angular", "Linear" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="boxes/box" index="0"]
+
+modulate = Color( 0, 0, 1, 1 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/box" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="box2" type="RigidBody2D" parent="boxes" index="1"]
+
+editor/display_folded = true
+position = Vector2( 112, 64 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 10.0
+friction = 1.0
+bounce = 0.5
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 4.0
+angular_velocity = 0.0
+angular_damp = 6.0
+_sections_unfolded = [ "Angular", "Linear" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="boxes/box2" index="0"]
+
+modulate = Color( 0, 0, 1, 1 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxes/box2" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="player" parent="." index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 176, 48 )
+
+[node name="notPlayer" parent="." index="4" instance=ExtResource( 6 )]
+
+position = Vector2( 64, 64 )
+
+[node name="Door" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 80, 48 )
+
+
